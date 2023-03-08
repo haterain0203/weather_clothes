@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'component/address_part.dart';
 import 'component/clothes_container.dart';
@@ -14,7 +15,33 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF003569),
+        //TODO 本日の日付を取得して表示
+        //TODO レイアウト的に数字のみフォントを大きくする予定
+        title: Text(
+          _setDateStr(DateTime.now()),
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              //TODO 押下処理
+            },
+            icon: const Icon(Icons.settings),
+          ),
+          IconButton(
+            onPressed: () {
+              //TODO 押下処理
+            },
+            icon: const Icon(Icons.share),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -104,6 +131,14 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _setDateStr(DateTime today) {
+    final dateFormat = DateFormat('M/d');
+    final strDate = dateFormat.format(today);
+    final dateFormatDayOfWeek = DateFormat.E('ja');
+    final strDayOfWeek = dateFormatDayOfWeek.format(today);
+    return "$strDate($strDayOfWeek)";
   }
 
   String _selectClothImageUrl(int temp) {
