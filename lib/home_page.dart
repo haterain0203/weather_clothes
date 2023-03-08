@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'component/address_part.dart';
 import 'component/clothes_container.dart';
 import 'component/compare_yesterday_part.dart';
+import 'component/forecast_part.dart';
 import 'component/rounded_corner_container.dart';
 import 'component/weather_info_part.dart';
 
@@ -36,11 +37,13 @@ class HomePage extends StatelessWidget {
             Expanded(
               child: CarouselSlider(
                 options: CarouselOptions(
-                    height: 300.0,
-                    viewportFraction: 0.65,
-                    enlargeCenterPage: true,
-                    // initialPage: _setInitialPage(today),
-                    initialPage: 0),
+                  height: 300.0,
+                  viewportFraction: 0.65,
+                  enlargeCenterPage: true,
+                  //TODO
+                  // initialPage: _setInitialPage(today),
+                  initialPage: 0,
+                ),
                 items: [
                   0,
                   1,
@@ -90,29 +93,11 @@ class HomePage extends StatelessWidget {
             ),
             Row(
               children: [
-                // ForecastPart(
-                //   homePageData: data,
-                //   dateStr: _setDateStr(tomorrow),
-                //   //TODO 明日の最高気温に変更
-                //   imageUrl: _selectImageURL(
-                //       data.openMeteo.daily.apparentTemperatureMax[1].round()),
-                //   maxTemp: data.openMeteo.daily.apparentTemperatureMax[1]
-                //       .round()
-                //       .toString(),
-                // ),
+                ForecastPart(),
                 const SizedBox(
                   width: 16.0,
                 ),
-                // ForecastPart(
-                //   homePageData: data,
-                //   dateStr: _setDateStr(dayAfterTomorrow),
-                //   //TODO 明後日の最高気温に変更
-                //   imageUrl: _selectImageURL(
-                //       data.openMeteo.daily.apparentTemperatureMax[2].round()),
-                //   maxTemp: data.openMeteo.daily.apparentTemperatureMax[2]
-                //       .round()
-                //       .toString(),
-                // ),
+                ForecastPart(),
               ],
             ),
           ],
