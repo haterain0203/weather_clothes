@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'component/address_part.dart';
 import 'component/rounded_corner_container.dart';
+import 'component/weather_info_part.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
                   //AddressArea
                   AddressPart(),
                   //天気情報部分
-                  // WeatherInfoPart(homePageData: data),
+                  WeatherInfoPart(),
                   //昨日と比べて部分
                   // CompareYesterdayPart(homePageData: data),
                 ],
