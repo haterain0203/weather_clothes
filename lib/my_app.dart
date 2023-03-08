@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:sizer/sizer.dart';
+import 'package:weather_clothes/constant/constant.dart';
 
 import 'home_page.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Weather_clothes',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Constant.mainColorSwatch,
           ),
           home: const HomePage(),
         );

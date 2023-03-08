@@ -16,7 +16,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF003569),
         //TODO レイアウト的に数字のみフォントを大きくする予定
         title: Text(
           _setDateStr(DateTime.now()),

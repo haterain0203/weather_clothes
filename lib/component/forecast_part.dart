@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:weather_clothes/component/rounded_corner_container.dart';
+import 'package:weather_clothes/constant/constant.dart';
 
 import 'clothes_container.dart';
 
@@ -18,7 +19,7 @@ class ForecastPart extends StatelessWidget {
           children: [
             const RoundedCornerContainer(
               //TODO テーマカラーに
-              color: Color(0xFF003569),
+              color: Constant.mainColor,
               child: Center(
                 child: Text(
                   //TODO 固定値
