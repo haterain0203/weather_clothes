@@ -1,11 +1,10 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_clothes/feature/weather/weather_repository.dart';
 
-final periodTemperatureRepoProvider =
-    Provider((ref) => PeriodTemperatureRepository());
+final weatherRepoProvider = Provider((ref) => WeatherRepository());
 
-final periodTemperatureProvider = FutureProvider((ref) {
-  final periodTemperatureRepo = ref.read(periodTemperatureRepoProvider);
+final weatherProvider = FutureProvider((ref) {
+  final weatherRepo = ref.read(weatherRepoProvider);
   //TODO 固定値
-  return periodTemperatureRepo.getPeriodTemperature(35.75, 139.87);
+  return weatherRepo.getWeather(35.75, 139.87);
 });
