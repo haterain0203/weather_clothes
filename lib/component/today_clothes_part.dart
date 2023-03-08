@@ -13,8 +13,8 @@ class TodayClothesPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final periodTemperature = ref.watch(periodTemperatureProvider);
-    return periodTemperature.when(
+    final weather = ref.watch(weatherProvider);
+    return weather.when(
       loading: () => const Expanded(
         child: Center(
           child: CircularProgressIndicator(),
@@ -124,7 +124,7 @@ class TodayClothesPart extends HookConsumerWidget {
     return '夜(19:00)';
   }
 
-  double _selectTemperature(PeriodTemperature data, int index) {
+  double _selectTemperature(Weather data, int index) {
     if (index == 0) {
       return data.morningTemperature;
     }
