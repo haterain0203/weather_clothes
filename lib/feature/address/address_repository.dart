@@ -7,7 +7,7 @@ class AddressRepository {
   //郵便番号から住所を取得する処理
   Future<Address> getAddress(String zipCode) async {
     //引数の郵便番号をもとにAPI用のURLを生成
-    String url = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=$zipCode";
+    final url = 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=$zipCode';
 
     //生成したURLでAPIを叩き、住所を取得
     final response = await http.get(Uri.parse(url));
@@ -15,7 +15,7 @@ class AddressRepository {
       final Map<String, dynamic> body = jsonDecode(response.body);
       return Address.fromJson(body);
     } else {
-      throw Exception("Failed get Address");
+      throw Exception('Failed get Address');
     }
   }
 }

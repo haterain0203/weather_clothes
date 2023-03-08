@@ -6,8 +6,8 @@ import 'home_data_text.dart';
 
 class AddressPart extends HookConsumerWidget {
   const AddressPart({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,12 +20,12 @@ class AddressPart extends HookConsumerWidget {
         //   // text: "〒000-0000",
         // ),
         SizedBox(
-          width: 16.0,
+          width: 16,
         ),
         HomeDataText(
           // text: homePageData.address.results[0].prefecture +
           //     homePageData.address.results[0].city,
-          text: "東京都xx区",
+          text: '東京都xx区',
         ),
       ],
     );

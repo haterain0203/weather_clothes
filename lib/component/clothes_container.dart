@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class ClothesContainer extends StatelessWidget {
   const ClothesContainer({
     required this.clothImageUrl,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String clothImageUrl;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(10),
         color: const Color(0xFF003569).withOpacity(0.1),
       ),
       child: Image.asset(
