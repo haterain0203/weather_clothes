@@ -16,14 +16,14 @@ class ForecastPart extends StatelessWidget {
         color: Colors.white,
         child: Column(
           children: [
-            RoundedCornerContainer(
+            const RoundedCornerContainer(
               //TODO テーマカラーに
-              color: const Color(0xFF003569),
+              color: Color(0xFF003569),
               child: Center(
                 child: Text(
                   //TODO 固定値
                   "aaa",
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
@@ -56,8 +56,8 @@ class ForecastPart extends StatelessWidget {
                     ),
                   ]),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: ClothesContainer(
                 //TODO 翌日の最高気温に
                 //TODO 固定値

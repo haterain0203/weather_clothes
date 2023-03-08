@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               // color: Colors.grey.shade200,
               child: Column(
-                children: [
+                children: const [
                   //AddressArea
                   AddressPart(),
                   //天気情報部分
@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
                           Text(
                             //TODO
                             i.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14,
                             ),
                           ),
@@ -74,9 +74,9 @@ class HomePage extends StatelessWidget {
                             //TODO
                             i.toString(),
                             // maxTemp.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
-                              color: const Color(0xFFF78611),
+                              color: Color(0xFFF78611),
                             ),
                           ),
                           const Text("℃"),
@@ -92,9 +92,9 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Row(
-              children: [
+              children: const [
                 ForecastPart(),
-                const SizedBox(
+                SizedBox(
                   width: 16.0,
                 ),
                 ForecastPart(),
@@ -108,13 +108,13 @@ class HomePage extends StatelessWidget {
 
   String _selectClothImageUrl(int temp) {
     const baseURL = "assets/images/";
-    if (temp >= 30) return baseURL + "t-shirt.png";
-    if (temp >= 25 && temp < 30) return baseURL + "shirt.png";
-    if (temp >= 20 && temp < 25) return baseURL + "long_shirt.png";
-    if (temp >= 16 && temp < 20) return baseURL + "cardigan.png";
-    if (temp >= 12 && temp < 16) return baseURL + "sweater.png";
-    if (temp >= 8 && temp < 12) return baseURL + "trench_coat.png";
-    if (temp >= 5 && temp < 8) return baseURL + "coat.png";
-    return baseURL + "down_coat.png";
+    if (temp >= 30) return "${baseURL}t-shirt.png";
+    if (temp >= 25 && temp < 30) return "${baseURL}shirt.png";
+    if (temp >= 20 && temp < 25) return "${baseURL}long_shirt.png";
+    if (temp >= 16 && temp < 20) return "${baseURL}cardigan.png";
+    if (temp >= 12 && temp < 16) return "${baseURL}sweater.png";
+    if (temp >= 8 && temp < 12) return "${baseURL}trench_coat.png";
+    if (temp >= 5 && temp < 8) return "${baseURL}coat.png";
+    return "${baseURL}down_coat.png";
   }
 }

@@ -13,12 +13,12 @@ class AddressPart extends StatelessWidget {
     return //TODO 設定画面で入力された郵便番号と住所を取得して表示
         Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: const [
         // HomeDataText(
         //   text: "〒${homePageData.address.results[0].zipcode}",
         //   // text: "〒000-0000",
         // ),
-        const SizedBox(
+        SizedBox(
           width: 16.0,
         ),
         HomeDataText(
