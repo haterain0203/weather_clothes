@@ -5,6 +5,7 @@ import 'package:weather_clothes/component/rounded_corner_container.dart';
 import 'package:weather_clothes/feature/weather/period_temperature.dart';
 import 'package:weather_clothes/feature/weather/period_temperature_controller.dart';
 
+import '../constant/constant.dart';
 import 'clothes_container.dart';
 
 class TodayClothesPart extends HookConsumerWidget {
@@ -17,7 +18,9 @@ class TodayClothesPart extends HookConsumerWidget {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stack) {
         print('error = $error');
-        return Center(child: Text('今日の時間別気温の取得時にエラーが発生しました: $error'));
+        return Center(
+          child: Text('今日の時間別気温の取得時にエラーが発生しました: $error'),
+        );
       },
       data: (data) {
         return Expanded(
@@ -60,7 +63,7 @@ class TodayClothesPart extends HookConsumerWidget {
                         // maxTemp.toString(),
                         style: const TextStyle(
                           fontSize: 18,
-                          color: Color(0xFFF78611),
+                          color: Constant.accentColor,
                         ),
                       ),
                       const Text('℃'),
