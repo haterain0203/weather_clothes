@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:weather_clothes/feature/weather/period_temperature.dart';
+import 'package:weather_clothes/feature/weather/weather.dart';
 
 class PeriodTemperatureRepository {
   //郵便番号から住所を取得する処理

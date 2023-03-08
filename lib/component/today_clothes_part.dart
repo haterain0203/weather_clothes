@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_clothes/component/rounded_corner_container.dart';
-import 'package:weather_clothes/feature/weather/period_temperature.dart';
 import 'package:weather_clothes/feature/weather/period_temperature_controller.dart';
+import 'package:weather_clothes/feature/weather/weather.dart';
 
 import '../constant/constant.dart';
 import 'clothes_container.dart';
