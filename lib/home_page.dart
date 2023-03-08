@@ -17,7 +17,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF003569),
-        //TODO 本日の日付を取得して表示
         //TODO レイアウト的に数字のみフォントを大きくする予定
         title: Text(
           _setDateStr(DateTime.now()),
