@@ -12,8 +12,10 @@ class AddressRepository {
     //生成したURLでAPIを叩き、住所を取得
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
-      final Map<String, dynamic> body = jsonDecode(response.body);
-      return Address.fromJson(body);
+      final body = json.decode(response.body) as Map<String, dynamic>;
+      final results = body['results'] as List;
+      final address = results[0] as Map<String, dynamic>;
+      return Address.fromJson(address);
     } else {
       throw Exception('Failed get Address');
     }
