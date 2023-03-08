@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'component/address_part.dart';
+import 'component/compare_yesterday_part.dart';
 import 'component/rounded_corner_container.dart';
 import 'component/weather_info_part.dart';
 
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
                   //天気情報部分
                   WeatherInfoPart(),
                   //昨日と比べて部分
-                  // CompareYesterdayPart(homePageData: data),
+                  CompareYesterdayPart(),
                 ],
               ),
             ),
@@ -55,7 +56,7 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "aaa",
+                            i.toString(),
                             style: TextStyle(
                               fontSize: 14,
                             ),
@@ -64,7 +65,7 @@ class HomePage extends StatelessWidget {
                             width: 16.0,
                           ),
                           Text(
-                            "bbb",
+                            i.toString(),
                             // maxTemp.toString(),
                             style: TextStyle(
                               fontSize: 18,
