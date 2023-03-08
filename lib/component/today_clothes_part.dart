@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_clothes/component/rounded_corner_container.dart';
+import 'package:weather_clothes/feature/weather/period_temperature.dart';
+import 'package:weather_clothes/feature/weather/period_temperature_controller.dart';
 
 import 'clothes_container.dart';
 
@@ -10,66 +12,74 @@ class TodayClothesPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Expanded(
-      child: CarouselSlider(
-        options: CarouselOptions(
-          height: 300,
-          viewportFraction: 0.65,
-          enlargeCenterPage: true,
-          //TODO
-          // initialPage: _setInitialPage(today),
-          initialPage: 1,
-        ),
-        items: [
-          0,
-          1,
-          2,
-        ].map((i) {
-          // final timeStr = _setTimeString(i);
-          // final maxTemp = _selectMaxTemperature(data, i);
-          //TODO 固定値
-          final clothImageUrl = _selectClothImageUrl(25);
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
+    final periodTemperature = ref.watch(periodTemperatureProvider);
+    return periodTemperature.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stack) {
+        print('error = $error');
+        return Center(child: Text('今日の時間別気温の取得時にエラーが発生しました: $error'));
+      },
+      data: (data) {
+        return Expanded(
+          child: CarouselSlider(
+            options: CarouselOptions(
+              height: 300,
+              viewportFraction: 0.65,
+              enlargeCenterPage: true,
+              //TODO
+              // initialPage: _setInitialPage(today),
+              initialPage: 1,
+            ),
+            items: [
+              0,
+              1,
+              2,
+            ].map((i) {
+              final periodStr = _setPeriodString(i);
+              final temperature = _selectTemperature(data, i);
+              //TODO 固定値
+              final clothImageUrl = _selectClothImageUrl(temperature);
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    //TODO
-                    i.toString(),
-                    style: const TextStyle(
-                      fontSize: 14,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        periodStr,
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Text(
+                        temperature.toString(),
+                        // maxTemp.toString(),
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Color(0xFFF78611),
+                        ),
+                      ),
+                      const Text('℃'),
+                    ],
                   ),
-                  const SizedBox(
-                    width: 16,
+                  RoundedCornerContainer(
+                    color: Colors.white,
+                    child: ClothesContainer(clothImageUrl: clothImageUrl),
                   ),
-                  Text(
-                    //TODO
-                    i.toString(),
-                    // maxTemp.toString(),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Color(0xFFF78611),
-                    ),
-                  ),
-                  const Text('℃'),
                 ],
-              ),
-              RoundedCornerContainer(
-                color: Colors.white,
-                child: ClothesContainer(clothImageUrl: clothImageUrl),
-              ),
-            ],
-          );
-        }).toList(),
-      ),
+              );
+            }).toList(),
+          ),
+        );
+      },
     );
   }
 
-  String _selectClothImageUrl(int temp) {
+  String _selectClothImageUrl(double temp) {
     const baseURL = 'assets/images/';
     if (temp >= 30) {
       return '${baseURL}t-shirt.png';
@@ -93,5 +103,25 @@ class TodayClothesPart extends HookConsumerWidget {
       return '${baseURL}coat.png';
     }
     return '${baseURL}down_coat.png';
+  }
+
+  String _setPeriodString(int index) {
+    if (index == 0) {
+      return '朝(7:00)';
+    }
+    if (index == 1) {
+      return '昼(12:00)';
+    }
+    return '夜(19:00)';
+  }
+
+  double _selectTemperature(PeriodTemperature data, int index) {
+    if (index == 0) {
+      return data.morningTemperature;
+    }
+    if (index == 1) {
+      return data.noonTemperature;
+    }
+    return data.nightTemperature;
   }
 }
