@@ -15,11 +15,17 @@ class TodayClothesPart extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final periodTemperature = ref.watch(periodTemperatureProvider);
     return periodTemperature.when(
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const Expanded(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
       error: (error, stack) {
         print('error = $error');
-        return Center(
-          child: Text('今日の時間別気温の取得時にエラーが発生しました: $error'),
+        return Expanded(
+          child: Center(
+            child: Text('今日の時間別気温の取得時にエラーが発生しました: $error'),
+          ),
         );
       },
       data: (data) {
