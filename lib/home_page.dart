@@ -56,6 +56,7 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
+                            //TODO
                             i.toString(),
                             style: TextStyle(
                               fontSize: 14,
@@ -65,6 +66,7 @@ class HomePage extends StatelessWidget {
                             width: 16.0,
                           ),
                           Text(
+                            //TODO
                             i.toString(),
                             // maxTemp.toString(),
                             style: TextStyle(
