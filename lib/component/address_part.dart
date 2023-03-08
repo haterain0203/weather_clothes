@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'home_data_text.dart';
 // import 'home_data_text.dart';
 
-class AddressPart extends StatelessWidget {
+class AddressPart extends HookConsumerWidget {
   const AddressPart({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return //TODO 設定画面で入力された郵便番号と住所を取得して表示
         Row(
       mainAxisAlignment: MainAxisAlignment.center,
