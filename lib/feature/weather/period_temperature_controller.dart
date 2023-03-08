@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:weather_clothes/feature/weather/period_temperature_repository.dart';
+import 'package:weather_clothes/feature/weather/weather_repository.dart';
 
 final periodTemperatureRepoProvider =
     Provider((ref) => PeriodTemperatureRepository());
