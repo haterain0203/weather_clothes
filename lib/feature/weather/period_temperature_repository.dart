@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:weather_clothes/feature/weather/period_temperature.dart';
 
-class AddressRepository {
+class PeriodTemperatureRepository {
   //郵便番号から住所を取得する処理
   Future<PeriodTemperature> getPeriodTemperature(double lat, double lon) async {
     //TODO 固定値
-    const url =
-        'https://api.open-meteo.com/v1/forecast?latitude=35.75&longitude=139.87&hourly=temperature_2m&timezone=Asia%2FTokyo';
+    final url =
+        'https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&hourly=temperature_2m&timezone=Asia%2FTokyo';
 
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
