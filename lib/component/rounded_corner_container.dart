@@ -8,8 +8,8 @@ class RoundedCornerContainer extends StatelessWidget {
     this.color,
     this.padding,
     this.child,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final VoidCallback? onTap;
   final double? height;
@@ -27,7 +27,7 @@ class RoundedCornerContainer extends StatelessWidget {
         //width指定がない場合は画面横幅いっぱい
         width: width ?? double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10),
           //color指定がない場合はホワイト
           color: color ?? Colors.white,
         ),

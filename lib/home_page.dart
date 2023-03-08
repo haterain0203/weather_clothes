@@ -10,7 +10,7 @@ import 'component/rounded_corner_container.dart';
 import 'component/weather_info_part.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +41,11 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
             RoundedCornerContainer(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               // color: Colors.grey.shade200,
               child: Column(
                 children: const [
@@ -62,12 +62,12 @@ class HomePage extends StatelessWidget {
             Expanded(
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: 300.0,
+                  height: 300,
                   viewportFraction: 0.65,
                   enlargeCenterPage: true,
                   //TODO
                   // initialPage: _setInitialPage(today),
-                  initialPage: 0,
+                  initialPage: 1,
                 ),
                 items: [
                   0,
@@ -93,7 +93,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            width: 16.0,
+                            width: 16,
                           ),
                           Text(
                             //TODO
@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
                               color: Color(0xFFF78611),
                             ),
                           ),
-                          const Text("℃"),
+                          const Text('℃'),
                         ],
                       ),
                       RoundedCornerContainer(
@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget {
               children: const [
                 ForecastPart(),
                 SizedBox(
-                  width: 16.0,
+                  width: 16,
                 ),
                 ForecastPart(),
               ],
@@ -136,18 +136,32 @@ class HomePage extends StatelessWidget {
     final strDate = dateFormat.format(today);
     final dateFormatDayOfWeek = DateFormat.E('ja');
     final strDayOfWeek = dateFormatDayOfWeek.format(today);
-    return "$strDate($strDayOfWeek)";
+    return '$strDate($strDayOfWeek)';
   }
 
   String _selectClothImageUrl(int temp) {
-    const baseURL = "assets/images/";
-    if (temp >= 30) return "${baseURL}t-shirt.png";
-    if (temp >= 25 && temp < 30) return "${baseURL}shirt.png";
-    if (temp >= 20 && temp < 25) return "${baseURL}long_shirt.png";
-    if (temp >= 16 && temp < 20) return "${baseURL}cardigan.png";
-    if (temp >= 12 && temp < 16) return "${baseURL}sweater.png";
-    if (temp >= 8 && temp < 12) return "${baseURL}trench_coat.png";
-    if (temp >= 5 && temp < 8) return "${baseURL}coat.png";
-    return "${baseURL}down_coat.png";
+    const baseURL = 'assets/images/';
+    if (temp >= 30) {
+      return '${baseURL}t-shirt.png';
+    }
+    if (temp >= 25 && temp < 30) {
+      return '${baseURL}shirt.png';
+    }
+    if (temp >= 20 && temp < 25) {
+      return '${baseURL}long_shirt.png';
+    }
+    if (temp >= 16 && temp < 20) {
+      return '${baseURL}cardigan.png';
+    }
+    if (temp >= 12 && temp < 16) {
+      return '${baseURL}sweater.png';
+    }
+    if (temp >= 8 && temp < 12) {
+      return '${baseURL}trench_coat.png';
+    }
+    if (temp >= 5 && temp < 8) {
+      return '${baseURL}coat.png';
+    }
+    return '${baseURL}down_coat.png';
   }
 }

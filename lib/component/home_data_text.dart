@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class HomeDataText extends StatelessWidget {
   const HomeDataText({
     required this.text,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String text;
 
