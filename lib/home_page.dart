@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'component/address_part.dart';
+import 'component/clothes_container.dart';
 import 'component/compare_yesterday_part.dart';
 import 'component/rounded_corner_container.dart';
 import 'component/weather_info_part.dart';
@@ -47,7 +48,8 @@ class HomePage extends StatelessWidget {
                 ].map((i) {
                   // final timeStr = _setTimeString(i);
                   // final maxTemp = _selectMaxTemperature(data, i);
-                  // final imageURL = _selectImageURL(maxTemp);
+                  //TODO 固定値
+                  final clothImageUrl = _selectClothImageUrl(25);
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
@@ -79,9 +81,7 @@ class HomePage extends StatelessWidget {
                       ),
                       RoundedCornerContainer(
                         color: Colors.white,
-                        // child: ClothesContainer(
-                        //   imageURL: imageURL,
-                        // ),
+                        child: ClothesContainer(clothImageUrl: clothImageUrl),
                       ),
                     ],
                   );
@@ -119,5 +119,17 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _selectClothImageUrl(int temp) {
+    const baseURL = "assets/images/";
+    if (temp >= 30) return baseURL + "t-shirt.png";
+    if (temp >= 25 && temp < 30) return baseURL + "shirt.png";
+    if (temp >= 20 && temp < 25) return baseURL + "long_shirt.png";
+    if (temp >= 16 && temp < 20) return baseURL + "cardigan.png";
+    if (temp >= 12 && temp < 16) return baseURL + "sweater.png";
+    if (temp >= 8 && temp < 12) return baseURL + "trench_coat.png";
+    if (temp >= 5 && temp < 8) return baseURL + "coat.png";
+    return baseURL + "down_coat.png";
   }
 }
