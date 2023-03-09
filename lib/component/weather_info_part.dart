@@ -70,4 +70,18 @@ class WeatherInfoPart extends HookConsumerWidget {
       },
     );
   }
+
+  // FaIcon setWeatherIcon(int weatherCode) {
+  //   if (weatherCode == 0) {
+  //     return const FaIcon(
+  //       FontAwesomeIcons.sun,
+  //       color: Colors.orange,
+  //     );
+  //   }
+  //   if(weatherCode >=1 && weatherCode <= 3) {
+  //     return const FaIcon(FontAwesomeIcons.cloudSun);
+  //   }
+  //   if(weatherCode  )
+  //
+  // }
 }
