@@ -24,7 +24,7 @@ class TodayClothesPart extends HookConsumerWidget {
         print('error = $error');
         return Expanded(
           child: Center(
-            child: Text('今日の時間別気温の取得時にエラーが発生しました: $error'),
+            child: Text('天気情報取得時にエラーが発生しました: $error'),
           ),
         );
       },
