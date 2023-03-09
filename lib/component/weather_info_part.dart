@@ -11,8 +11,8 @@ class WeatherInfoPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final weather = ref.watch(weatherProvider);
-    return weather.when(
+    final temperature = ref.watch(temperatureProvider);
+    return temperature.when(
       loading: () => const Center(
         child: CircularProgressIndicator(),
       ),

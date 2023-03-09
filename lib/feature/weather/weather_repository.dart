@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:weather_clothes/feature/weather/weather.dart';
+import 'package:weather_clothes/feature/weather/temperature.dart';
 
-class WeatherRepository {
+class TemperatureRepository {
   //郵便番号から住所を取得する処理
-  Future<Weather> getWeather(double lat, double lon) async {
+  Future<Temperature> getTemperature(double lat, double lon) async {
     //TODO 固定値
     final url =
         'https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&hourly=temperature_2m&timezone=Asia%2FTokyo&daily=weathercode&daily=temperature_2m_max&past_days=1';
@@ -17,9 +17,7 @@ class WeatherRepository {
       final daily = body['daily'] as Map<String, dynamic>;
       final weatherCodeList = daily['weathercode'] as List;
       final dailyTemperatureList = daily['temperature_2m_max'] as List;
-      return Weather(
-        // 当日の天気
-        weatherCode: weatherCodeList[1] as int,
+      return Temperature(
         // 当日7:00の気温
         morningTemperature: hourlyTemperatureList[32] as double,
         // 当日12:00の気温

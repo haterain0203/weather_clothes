@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weather.dart';
+part of 'temperature.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Weather _$$_WeatherFromJson(Map<String, dynamic> json) => _$_Weather(
-      weatherCode: json['weatherCode'] as int,
+_$_Temperature _$$_TemperatureFromJson(Map<String, dynamic> json) =>
+    _$_Temperature(
       morningTemperature: (json['morningTemperature'] as num).toDouble(),
       noonTemperature: (json['noonTemperature'] as num).toDouble(),
       nightTemperature: (json['nightTemperature'] as num).toDouble(),
@@ -16,9 +16,8 @@ _$_Weather _$$_WeatherFromJson(Map<String, dynamic> json) => _$_Weather(
       tomorrowTemperature: (json['tomorrowTemperature'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_WeatherToJson(_$_Weather instance) =>
+Map<String, dynamic> _$$_TemperatureToJson(_$_Temperature instance) =>
     <String, dynamic>{
-      'weatherCode': instance.weatherCode,
       'morningTemperature': instance.morningTemperature,
       'noonTemperature': instance.noonTemperature,
       'nightTemperature': instance.nightTemperature,

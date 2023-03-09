@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_clothes/component/rounded_corner_container.dart';
 import 'package:weather_clothes/feature/weather/period_temperature_controller.dart';
-import 'package:weather_clothes/feature/weather/weather.dart';
+import 'package:weather_clothes/feature/weather/temperature.dart';
 
 import '../constant/constant.dart';
 import 'clothes_container.dart';
@@ -13,8 +13,8 @@ class TodayClothesPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final weather = ref.watch(weatherProvider);
-    return weather.when(
+    final temperature = ref.watch(temperatureProvider);
+    return temperature.when(
       loading: () => const Expanded(
         child: Center(
           child: CircularProgressIndicator(),
@@ -124,7 +124,7 @@ class TodayClothesPart extends HookConsumerWidget {
     return '夜(19:00)';
   }
 
-  double _selectTemperature(Weather data, int index) {
+  double _selectTemperature(Temperature data, int index) {
     if (index == 0) {
       return data.morningTemperature;
     }
