@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sizer/sizer.dart';
-import 'package:weather_clothes/feature/weather/period_temperature_controller.dart';
+import 'package:weather_clothes/feature/weather/temperature_controller.dart';
 
 class WeatherInfoPart extends HookConsumerWidget {
   const WeatherInfoPart({
