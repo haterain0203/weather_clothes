@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_clothes/component/forecast_part.dart';
 import 'package:weather_clothes/component/today_clothes_part.dart';
 
 import 'component/address_part.dart';
 import 'component/compare_yesterday_part.dart';
-import 'component/forecast_part.dart';
 import 'component/rounded_corner_container.dart';
 import 'component/weather_info_part.dart';
 
@@ -61,15 +61,7 @@ class HomePage extends StatelessWidget {
             ),
             //ClothesArea
             const TodayClothesPart(),
-            Row(
-              children: const [
-                ForecastPart(),
-                SizedBox(
-                  width: 16,
-                ),
-                ForecastPart(),
-              ],
-            ),
+            const ForecastPart(),
           ],
         ),
       ),

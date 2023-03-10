@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:sizer/sizer.dart';
+import 'package:weather_clothes/component/rounded_corner_container.dart';
+
+import '../constant/constant.dart';
+import 'clothes_container.dart';
+
+class YesterdayOrTomorrowContainer extends StatelessWidget {
+  const YesterdayOrTomorrowContainer({
+    required this.date,
+    required this.temperature,
+    super.key,
+  });
+  final DateTime date;
+  final double temperature;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: RoundedCornerContainer(
+        color: Colors.white,
+        child: Column(
+          children: [
+            RoundedCornerContainer(
+              //TODO テーマカラーに
+              color: Constant.mainColor,
+              child: Center(
+                child: Text(
+                  //TODO 固定値
+                  _setDateStr(date),
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            //天気情報部分
+            //TODO OpenWeatherの天気アイコン追加したい
+            RichText(
+              text: TextSpan(
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 10.sp,
+                ),
+                children: [
+                  const TextSpan(text: '最高：'),
+                  TextSpan(
+                    //TODO 翌日の最高気温に修正
+                    //TODO 固定値
+                    text: temperature.toString(),
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: const Color(0xFFF78611),
+                    ),
+                  ),
+                  const TextSpan(
+                    text: '℃',
+                  ),
+                ],
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: ClothesContainer(
+                //TODO 翌日の最高気温に
+                //TODO 固定値
+                clothImageUrl: 'assets/images/t-shirt.png',
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  String _setDateStr(DateTime today) {
+    final dateFormat = DateFormat('M/d');
+    final strDate = dateFormat.format(today);
+    final dateFormatDayOfWeek = DateFormat.E('ja');
+    final strDayOfWeek = dateFormatDayOfWeek.format(today);
+    return '$strDate($strDayOfWeek)';
+  }
+}
