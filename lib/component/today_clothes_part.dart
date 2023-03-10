@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_clothes/component/rounded_corner_container.dart';
 import 'package:weather_clothes/feature/weather/temperature.dart';
-import 'package:weather_clothes/feature/weather/temperature_controller.dart';
+import 'package:weather_clothes/feature/weather/weather_controller.dart';
 
 import '../constant/constant.dart';
 import 'clothes_container.dart';
