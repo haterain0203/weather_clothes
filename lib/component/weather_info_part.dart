@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sizer/sizer.dart';
-import 'package:weather_clothes/feature/weather/temperature_controller.dart';
+import 'package:weather_clothes/feature/weather/weather_controller.dart';
 
 class WeatherInfoPart extends HookConsumerWidget {
   const WeatherInfoPart({
@@ -11,8 +11,8 @@ class WeatherInfoPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final temperature = ref.watch(temperatureProvider);
-    return temperature.when(
+    final weather = ref.watch(weatherProvider);
+    return weather.when(
       loading: () => const Center(
         child: CircularProgressIndicator(),
       ),
@@ -50,7 +50,7 @@ class WeatherInfoPart extends HookConsumerWidget {
                 children: [
                   const TextSpan(text: '最高：'),
                   TextSpan(
-                    text: data.maxTemperature.toString(),
+                    text: data.temperature.maxTemperature.toString(),
                     // text: homePageData.openMeteo.daily.apparentTemperatureMax[1]
                     //     .toInt()
                     //     .toString(),

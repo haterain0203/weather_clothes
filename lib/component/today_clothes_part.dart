@@ -13,8 +13,8 @@ class TodayClothesPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final temperature = ref.watch(temperatureProvider);
-    return temperature.when(
+    final weather = ref.watch(weatherProvider);
+    return weather.when(
       loading: () => const Expanded(
         child: Center(
           child: CircularProgressIndicator(),
@@ -45,7 +45,7 @@ class TodayClothesPart extends HookConsumerWidget {
               2,
             ].map((i) {
               final periodStr = _setPeriodString(i);
-              final temperature = _selectTemperature(data, i);
+              final temperature = _selectTemperature(data.temperature, i);
               //TODO 固定値
               final clothImageUrl = _selectClothImageUrl(temperature);
               return Column(
