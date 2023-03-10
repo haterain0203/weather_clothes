@@ -12,11 +12,13 @@ class WeatherDataRepository {
       _zipCode = '${zipCode.substring(0, 3)}-${zipCode.substring(3)}';
     }
     final url =
-        'https://api.openweathermap.org/data/2.5/forecast?zip=$_zipCode,JP&appid=b10f2f5d63bee6f33f3ef043ceccb9ae&lang=ja&units=metric';
+        'https://api.openweathermap.org/data/2.5/weather?zip=$_zipCode,JP&appid=b10f2f5d63bee6f33f3ef043ceccb9ae&lang=ja&units=metric';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final body = json.decode(response.body) as Map<String, dynamic>;
-      return WeatherData.fromJson(body);
+      final weather = body['weather'] as List;
+      final weatherData = weather[0] as Map<String, dynamic>;
+      return WeatherData.fromJson(weatherData);
     } else {
       throw Exception('Failed get OpenWeather');
     }
