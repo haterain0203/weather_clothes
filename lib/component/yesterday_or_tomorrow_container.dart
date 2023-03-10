@@ -23,11 +23,9 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
         child: Column(
           children: [
             RoundedCornerContainer(
-              //TODO テーマカラーに
               color: Constant.mainColor,
               child: Center(
                 child: Text(
-                  //TODO 固定値
                   _setDateStr(date),
                   style: const TextStyle(
                     color: Colors.white,
@@ -39,7 +37,6 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
               height: 8,
             ),
             //天気情報部分
-            //TODO OpenWeatherの天気アイコン追加したい
             RichText(
               text: TextSpan(
                 style: TextStyle(
@@ -49,8 +46,6 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
                 children: [
                   const TextSpan(text: '最高：'),
                   TextSpan(
-                    //TODO 翌日の最高気温に修正
-                    //TODO 固定値
                     text: temperature.toString(),
                     style: TextStyle(
                       fontSize: 14.sp,
@@ -66,7 +61,6 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(16),
               child: ClothesContainer(
-                //TODO 翌日の最高気温に
                 //TODO 固定値
                 clothImageUrl: 'assets/images/t-shirt.png',
               ),
@@ -77,6 +71,7 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
     );
   }
 
+  //TODO 共通化した方が良さそう
   String _setDateStr(DateTime today) {
     final dateFormat = DateFormat('M/d');
     final strDate = dateFormat.format(today);
