@@ -26,17 +26,15 @@ class WeatherInfoPart extends HookConsumerWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 10.h,
-              width: 10.h,
-              child: CachedNetworkImage(
-                //TODO 固定値修正
-                imageUrl:
-                    'https://i0.wp.com/greenlifesupport.com/home/wp-content/uploads/2020/04/41-414567_simple-weather-icons-sunny-sunny-weather-icon-png.jpg?ssl=1',
-                // imageUrl:
-                //     "http://openweathermap.org/img/wn/${homePageData.openWeather.descAndIcon[0].icon}.png",
-                fit: BoxFit.contain,
-              ),
+            Column(
+              children: [
+                CachedNetworkImage(
+                  //TODO 固定値修正
+                  imageUrl:
+                      'http://openweathermap.org/img/wn/${data.weatherData.icon}.png',
+                ),
+                Text(data.weatherData.description),
+              ],
             ),
             const SizedBox(
               width: 20,

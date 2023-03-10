@@ -50,8 +50,10 @@ class HomePage extends StatelessWidget {
                 children: const [
                   //AddressArea
                   AddressPart(),
+                  SizedBox(height: 16),
                   //天気情報部分
                   WeatherInfoPart(),
+                  SizedBox(height: 16),
                   //昨日と比べて部分
                   CompareYesterdayPart(),
                 ],
