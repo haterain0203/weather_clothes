@@ -23,8 +23,24 @@ class HomePage extends HookConsumerWidget {
         ),
       ),
       error: (error, stack) {
-        return Center(
-          child: Text('天気情報取得時にエラーが発生しました: $error'),
+        return Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  '天気情報取得時にエラーが発生しました: $error',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  ref.invalidate(weatherProvider);
+                },
+                child: const Text('再度読み込む'),
+              )
+            ],
+          ),
         );
       },
       data: (data) {
