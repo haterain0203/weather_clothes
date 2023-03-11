@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class HomeDataText extends StatelessWidget {
   const HomeDataText({
@@ -12,8 +13,8 @@ class HomeDataText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
-        fontSize: 12,
+      style: TextStyle(
+        fontSize: 11.sp,
       ),
     );
   }
