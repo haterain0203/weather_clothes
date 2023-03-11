@@ -68,7 +68,7 @@ class CompareYesterdayPart extends HookConsumerWidget {
     if (differenceTemp >= -5) {
       return '結構寒い';
     }
-    if (differenceTemp > -6) {
+    if (differenceTemp < -6) {
       return 'かなり寒い';
     }
     return '';
