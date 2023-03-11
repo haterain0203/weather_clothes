@@ -20,4 +20,8 @@ class Constant {
       900: mainColor,
     },
   );
+
+  static const Color accentColor = Color(_accentColorValue);
+
+  static const int _accentColorValue = 0xFFF78611;
 }
