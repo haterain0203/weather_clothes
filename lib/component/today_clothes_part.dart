@@ -21,7 +21,6 @@ class TodayClothesPart extends HookConsumerWidget {
         ),
       ),
       error: (error, stack) {
-        print('error = $error');
         return Expanded(
           child: Center(
             child: Text('天気情報取得時にエラーが発生しました: $error'),
@@ -65,7 +64,6 @@ class TodayClothesPart extends HookConsumerWidget {
                       ),
                       Text(
                         temperature.toString(),
-                        // maxTemp.toString(),
                         style: const TextStyle(
                           fontSize: 18,
                           color: Constant.accentColor,
@@ -92,22 +90,22 @@ class TodayClothesPart extends HookConsumerWidget {
     if (temp >= 30) {
       return '${baseURL}t-shirt.png';
     }
-    if (temp >= 25 && temp < 30) {
+    if (temp >= 25) {
       return '${baseURL}shirt.png';
     }
-    if (temp >= 20 && temp < 25) {
+    if (temp >= 20) {
       return '${baseURL}long_shirt.png';
     }
-    if (temp >= 16 && temp < 20) {
+    if (temp >= 16) {
       return '${baseURL}cardigan.png';
     }
-    if (temp >= 12 && temp < 16) {
+    if (temp >= 12) {
       return '${baseURL}sweater.png';
     }
-    if (temp >= 8 && temp < 12) {
+    if (temp >= 8) {
       return '${baseURL}trench_coat.png';
     }
-    if (temp >= 5 && temp < 8) {
+    if (temp >= 5) {
       return '${baseURL}coat.png';
     }
     return '${baseURL}down_coat.png';
