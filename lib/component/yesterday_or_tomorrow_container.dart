@@ -59,9 +59,8 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: ClothesContainer(
-                //TODO 固定値
                 clothImageUrl: _selectClothImageUrl(temperature),
               ),
             ),
