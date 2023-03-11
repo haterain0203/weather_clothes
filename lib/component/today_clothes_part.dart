@@ -46,7 +46,6 @@ class TodayClothesPart extends HookConsumerWidget {
             ].map((i) {
               final periodStr = _setPeriodString(i);
               final temperature = _selectTemperature(data.temperature, i);
-              //TODO 固定値
               final clothImageUrl = _selectClothImageUrl(temperature);
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
