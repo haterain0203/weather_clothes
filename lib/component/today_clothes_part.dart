@@ -32,11 +32,11 @@ class TodayClothesPart extends HookConsumerWidget {
         return Expanded(
           child: CarouselSlider(
             options: CarouselOptions(
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 2),
               height: 300,
               viewportFraction: 0.65,
               enlargeCenterPage: true,
-              //TODO
-              // initialPage: _setInitialPage(today),
               initialPage: 1,
             ),
             items: [
