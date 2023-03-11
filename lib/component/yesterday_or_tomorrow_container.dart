@@ -58,11 +58,11 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(16),
               child: ClothesContainer(
                 //TODO 固定値
-                clothImageUrl: 'assets/images/t-shirt.png',
+                clothImageUrl: _selectClothImageUrl(temperature),
               ),
             ),
           ],
@@ -78,5 +78,32 @@ class YesterdayOrTomorrowContainer extends StatelessWidget {
     final dateFormatDayOfWeek = DateFormat.E('ja');
     final strDayOfWeek = dateFormatDayOfWeek.format(today);
     return '$strDate($strDayOfWeek)';
+  }
+
+  //TODO 共通化した方が良さそう
+  String _selectClothImageUrl(double temp) {
+    const baseURL = 'assets/images/';
+    if (temp >= 30) {
+      return '${baseURL}t-shirt.png';
+    }
+    if (temp >= 25) {
+      return '${baseURL}shirt.png';
+    }
+    if (temp >= 20) {
+      return '${baseURL}long_shirt.png';
+    }
+    if (temp >= 16) {
+      return '${baseURL}cardigan.png';
+    }
+    if (temp >= 12) {
+      return '${baseURL}sweater.png';
+    }
+    if (temp >= 8) {
+      return '${baseURL}trench_coat.png';
+    }
+    if (temp >= 5) {
+      return '${baseURL}coat.png';
+    }
+    return '${baseURL}down_coat.png';
   }
 }
