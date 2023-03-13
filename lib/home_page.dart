@@ -76,7 +76,6 @@ class HomePage extends HookConsumerWidget {
               children: [
                 RoundedCornerContainer(
                   padding: const EdgeInsets.all(8),
-                  // color: Colors.grey.shade200,
                   child: Column(
                     children: const [
                       //AddressArea
