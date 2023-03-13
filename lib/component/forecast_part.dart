@@ -11,6 +11,7 @@ class ForecastPart extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // HomePage時点でweatherProviderの値を所得済み（エラーの場合はエラーハンドリング）のため、ここでは「！」
+    // このWidgetでは、Weatherクラスのうち、temperatureしか使用しないため「.select」
     final temperature = ref.watch(
       weatherProvider.select(
         (asyncWeather) => asyncWeather.value!.temperature,
