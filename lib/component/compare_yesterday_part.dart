@@ -11,40 +11,30 @@ class CompareYesterdayPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // HomePage時点でweatherProviderの値を所得済み（エラーの場合はエラーハンドリング）のため、ここでは「！」
+    // このWidgetでは、Weatherクラスのうち、temperatureしか使用しないため「.select」
     final temperature = ref.watch(
       weatherProvider.select(
-        (asyncWeather) =>
-            asyncWeather.whenData((weather) => weather.temperature),
+        (asyncWeather) => asyncWeather.value!.temperature,
       ),
     );
-    return temperature.when(
-        loading: () => const Center(
-              child: CircularProgressIndicator(),
-            ),
-        error: (error, stack) {
-          return Center(
-            child: Text('天気情報取得時にエラーが発生しました: $error'),
-          );
-        },
-        data: (data) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const HomeDataText(
-                text: '昨日と比べて：',
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              HomeDataText(
-                text: _compareTemperature(
-                  todayTemp: data.maxTemperature,
-                  yesterdayTemp: data.yesterdayTemperature,
-                ),
-              ),
-            ],
-          );
-        });
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const HomeDataText(
+          text: '昨日と比べて：',
+        ),
+        const SizedBox(
+          width: 16,
+        ),
+        HomeDataText(
+          text: _compareTemperature(
+            todayTemp: temperature.maxTemperature,
+            yesterdayTemp: temperature.yesterdayTemperature,
+          ),
+        ),
+      ],
+    );
   }
 
   String _compareTemperature(

@@ -10,36 +10,29 @@ class ForecastPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final weather = ref.watch(weatherProvider);
-    return weather.when(
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
+    // HomePage時点でweatherProviderの値を所得済み（エラーの場合はエラーハンドリング）のため、ここでは「！」
+    // このWidgetでは、Weatherクラスのうち、temperatureしか使用しないため「.select」
+    final temperature = ref.watch(
+      weatherProvider.select(
+        (asyncWeather) => asyncWeather.value!.temperature,
       ),
-      error: (error, stack) {
-        print('error = $error');
-        return Center(
-          child: Text('天気情報取得時にエラーが発生しました: $error'),
-        );
-      },
-      data: (data) {
-        return Row(
-          children: [
-            YesterdayOrTomorrowContainer(
-              // 昨日の日付
-              date: DateTime.now().subtract(const Duration(days: 1)),
-              temperature: data.temperature.yesterdayTemperature,
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            YesterdayOrTomorrowContainer(
-              // 明日の日付
-              date: DateTime.now().subtract(const Duration(days: -1)),
-              temperature: data.temperature.tomorrowTemperature,
-            ),
-          ],
-        );
-      },
+    );
+    return Row(
+      children: [
+        YesterdayOrTomorrowContainer(
+          // 昨日の日付
+          date: DateTime.now().subtract(const Duration(days: 1)),
+          temperature: temperature.yesterdayTemperature,
+        ),
+        const SizedBox(
+          width: 16,
+        ),
+        YesterdayOrTomorrowContainer(
+          // 明日の日付
+          date: DateTime.now().subtract(const Duration(days: -1)),
+          temperature: temperature.tomorrowTemperature,
+        ),
+      ],
     );
   }
 }

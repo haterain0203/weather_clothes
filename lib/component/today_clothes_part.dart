@@ -13,75 +13,63 @@ class TodayClothesPart extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final weather = ref.watch(weatherProvider);
-    return weather.when(
-      loading: () => const Expanded(
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
+    final temperature = ref.watch(
+      weatherProvider.select(
+        (asyncWeather) => asyncWeather.value!.temperature,
       ),
-      error: (error, stack) {
-        return Expanded(
-          child: Center(
-            child: Text('天気情報取得時にエラーが発生しました: $error'),
-          ),
-        );
-      },
-      data: (data) {
-        return Expanded(
-          child: CarouselSlider(
-            options: CarouselOptions(
-              autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 2),
-              height: 300,
-              viewportFraction: 0.65,
-              enlargeCenterPage: true,
-              initialPage: 1,
-            ),
-            items: [
-              0,
-              1,
-              2,
-            ].map((i) {
-              final periodStr = _setPeriodString(i);
-              final temperature = _selectTemperature(data.temperature, i);
-              final clothImageUrl = _selectClothImageUrl(temperature);
-              return Column(
+    );
+    return Expanded(
+      child: CarouselSlider(
+        options: CarouselOptions(
+          autoPlay: true,
+          autoPlayInterval: const Duration(seconds: 2),
+          height: 300,
+          viewportFraction: 0.65,
+          enlargeCenterPage: true,
+          initialPage: 1,
+        ),
+        items: [
+          0,
+          1,
+          2,
+        ].map((i) {
+          final periodStr = _setPeriodString(i);
+          final periodTemperature = _selectTemperature(temperature, i);
+          final clothImageUrl = _selectClothImageUrl(periodTemperature);
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        periodStr,
-                        style: const TextStyle(
-                          fontSize: 14,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 16,
-                      ),
-                      Text(
-                        temperature.toString(),
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Constant.accentColor,
-                        ),
-                      ),
-                      const Text('℃'),
-                    ],
+                  Text(
+                    periodStr,
+                    style: const TextStyle(
+                      fontSize: 14,
+                    ),
                   ),
-                  RoundedCornerContainer(
-                    color: Colors.white,
-                    child: ClothesContainer(clothImageUrl: clothImageUrl),
+                  const SizedBox(
+                    width: 16,
                   ),
+                  Text(
+                    periodTemperature.toString(),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Constant.accentColor,
+                    ),
+                  ),
+                  const Text('℃'),
                 ],
-              );
-            }).toList(),
-          ),
-        );
-      },
+              ),
+              RoundedCornerContainer(
+                color: Colors.white,
+                child: ClothesContainer(clothImageUrl: clothImageUrl),
+              ),
+            ],
+          );
+        }).toList(),
+      ),
     );
   }
 
